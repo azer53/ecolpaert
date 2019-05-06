@@ -1,8 +1,9 @@
 ---
 title: Building a blog
 date: "2019-05-06T22:12:03.284Z"
+description: "Starting a blog with Gatsby.js coming from Hugo and outlining future plans"
 ---
- A short introduction to the introduction to newly discovered technology
+ A short introduction to newly discovered technology
 
   - Why switching from Hugo to Gatsby?
   - Netlify deployment

@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Logo from "../components/logo"
 
 import { rhythm, scale } from "../utils/typography"
 
@@ -18,14 +19,17 @@ class Layout extends React.Component {
             marginTop: 0,
           }}
         >
+
           <Link
             style={{
               boxShadow: `none`,
               textDecoration: `none`,
               color: `inherit`,
+              display: `flex`
             }}
             to={`/`}
           >
+            <Logo />
             {title}
           </Link>
         </h1>
@@ -65,7 +69,7 @@ class Layout extends React.Component {
         <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> and <a href="https://www.netlify.com">Netlify</a> 
+          <a href="https://www.gatsbyjs.org">Gatsby</a> and <a href="https://www.netlify.com">Netlify</a>
         </footer>
       </div>
     )
