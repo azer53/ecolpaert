@@ -47,10 +47,12 @@ class Layout extends React.Component {
               boxShadow: `none`,
               textDecoration: `none`,
               color: `inherit`,
+              display:`flex`
             }}
             to={`/`}
           >
-            {title}
+           <Logo />
+            {/* {title} */}
           </Link>
         </h3>
       )
