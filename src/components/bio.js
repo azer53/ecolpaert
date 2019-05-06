@@ -38,12 +38,9 @@ function Bio() {
               }}
             />
             <p>
-              Written by <strong>{author}</strong> who lives and works in San
-              Francisco building useful things.
+              <p>By <a href={`https://twitter.com/${social.twitter}`}><strong>{author}</strong> </a> </p>
               {` `}
-              <a href={`https://twitter.com/${social.twitter}`}>
-                You should follow him on Twitter
-              </a>
+              Working at delaware, professional SAP C/4 enthusiast and quite passionate about new Open-Source technology. 
             </p>
           </div>
         )
