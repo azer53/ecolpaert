@@ -6,4 +6,4 @@ author: Eli
 tags:
   - Netlify
 ---
-Intro about setting Netlify CMS
+Intro about setting up Netlify CMS
