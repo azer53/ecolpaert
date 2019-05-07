@@ -1,18 +1,20 @@
 backend:
-  name: github
-  repo: azer53/ecolpaert
+  name: git-gateway
+  branch: master
 
 media_folder: assets
 public_folder: static
+publish_mode: editorial_workflow
 
 collections:
   - name: blog
     label: Blog
-    folder: blog
+    folder: content/blog
     create: true
     fields:
-      - { name: path, label: Path }
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
       - { name: date, label: Date, widget: date }
       - { name: title, label: Title }
       - { name: author, label: Author }
       - { name: body, label: Body, widget: markdown }
+      - {label: "Tags", name: "tags", widget: "list"}
