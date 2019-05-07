@@ -9,7 +9,7 @@ publish_mode: editorial_workflow
 collections:
   - name: blog
     label: Blog
-    folder: blog
+    folder: content/blog
     create: true
     fields:
       - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
