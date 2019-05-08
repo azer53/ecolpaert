@@ -5,6 +5,7 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { rhythm, scale } from "../utils/typography"
+// import PropTypes from "prop-types";
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -66,7 +67,14 @@ class BlogPostTemplate extends React.Component {
   }
 }
 
-export default BlogPostTemplate
+
+// BlogPostTemplate.propTypes = {
+//   blog: PropTypes.shape({
+//     title: PropTypes.string
+//   }),
+// };
+
+export default BlogPostTemplate;
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
