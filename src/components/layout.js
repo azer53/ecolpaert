@@ -23,21 +23,22 @@ class Layout extends React.Component {
         <h3>
           <Link to={`/`}>
             <Logo />
-            {/* {title} */}
+            {title}
           </Link>
         </h3>
       )
     }
     return (
-      <div>
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> and{" "}
-          <a href="https://www.netlify.com">Netlify</a>
-        </footer>
+      <div className="antialiased text-gray-900 font-sans">
+        <div className="">
+          <main className="">{children}</main>
+          <footer>
+            © {new Date().getFullYear()}, Built with
+            {` `}
+            <a href="https://www.gatsbyjs.org">Gatsby</a> and{" "}
+            <a href="https://www.netlify.com">Netlify</a>
+          </footer>
+        </div>
       </div>
     )
   }
