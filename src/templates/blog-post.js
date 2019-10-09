@@ -40,7 +40,10 @@ class BlogPostTemplate extends React.Component {
         ),
         [BLOCKS.QUOTE]: (post, children) => <q className="my-12">{children}</q>,
         [INLINES.HYPERLINK]: (post, children) => (
-          <a className="text-indigo-700 font-semibold cursor-pointer border-b border-indigo-500">
+          <a
+            href="/"
+            className="text-indigo-700 font-semibold cursor-pointer border-b border-indigo-500"
+          >
             {children}
           </a>
         ),
