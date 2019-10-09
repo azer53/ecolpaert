@@ -74,7 +74,7 @@ export const pageQuery = graphql`
       }
     }
     contentfulBlogPost(slug: { eq: $slug }) {
-      publicationDate
+      publicationDate(formatString: "MMMM Do, YYYY")
       tags
       title
       slug

@@ -57,12 +57,12 @@ export const pageQuery = graphql`
         title
       }
     }
-    allContentfulBlogPost {
+    allContentfulBlogPost(sort: { fields: [publicationDate], order: DESC }) {
       edges {
         node {
           slug
           title
-          publicationDate
+          publicationDate(formatString: "MMMM Do, YYYY")
         }
       }
     }
