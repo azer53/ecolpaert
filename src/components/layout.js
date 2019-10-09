@@ -32,9 +32,9 @@ class Layout extends React.Component {
       <div className="antialiased text-gray-900 font-sans">
         <main className="">{children}</main>
         <footer className="bg-gray-900 text-gray-100">
-          <div className="flex justify-between p-4">
+          <div className="flex justify-between p-8">
             <div className="text-center"></div>
-            <div className="text-center text-gray-100">
+            <div className="text-center text-gray-300">
               Made By Eli Colpaert
             </div>
             <div className="text-center"></div>

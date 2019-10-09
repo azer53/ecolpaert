@@ -7,11 +7,11 @@ export default class PostCollection extends Component {
     const posts = this.props.posts
 
     return (
-      <div className="p-8 py-12">
+      <div className="p-8 pb-0 pb-12">
         {posts.map(({ node }) => {
           const title = node.title || node.slug
           return (
-            <div key={node.slug} className="py-12 border-gray-200 border-b">
+            <div key={node.slug} className="py-8 border-gray-200 border-b">
               <p className="font-thin uppercase text-xs tracking-widest py-1">
                 {node.publicationDate}
               </p>
