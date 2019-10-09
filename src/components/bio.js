@@ -16,23 +16,24 @@ function Bio() {
       render={data => {
         const { author, social } = data.site.siteMetadata
         return (
-          <div>
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
+          <div className="p-6 border-gray-300 border my-8 flex flex-col items-center">
+            <div className="my-2">
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                alt={author}
+                className="rounded-full border-orange-500 border-4"
+              />
+            </div>
             <p>
-              By{" "}
+              By&nbsp;
               <a href={`https://twitter.com/${social.twitter}`}>
-                <strong>{author}</strong>{" "}
-              </a>{" "}
+                <strong>{author}</strong>
+              </a>
             </p>
-            {` `}
-            Working at delaware, professional SAP C/4 enthusiast and quite
-            passionate about new Open-Source technology.
+            <section className="w-1/2 mx-auto text-center">
+              Working at delaware, professional SAP C/4 enthusiast and quite
+              passionate about new Open-Source technology.
+            </section>
           </div>
         )
       }}
@@ -44,7 +45,7 @@ const bioQuery = graphql`
   query BioQuery {
     avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 100, height: 100) {
           ...GatsbyImageSharpFixed
         }
       }

@@ -1,9 +1,8 @@
 import React from "react"
-import { Link, graphql } from "gatsby"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import Hero from "../components/Hero"
 import PostCollection from "../components/PostCollection"
 
 class BlogIndex extends React.Component {
@@ -27,7 +26,6 @@ class BlogIndex extends React.Component {
             `SAP`,
           ]}
         />
-        <Hero />
         <div className="sm:max-w-4xl mx-auto py-10 p-8">
           <h3 className="text-2xl uppercase tracking-wider font-thin text-gray-700">
             <span className="pb-2 border-b border-orange-500">

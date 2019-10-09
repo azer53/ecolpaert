@@ -1,35 +1,22 @@
 import React from "react"
-import { Link } from "gatsby"
-import Logo from "../components/logo"
+import Hero from "../components/Hero"
 import "../css/global.css"
+import HeroNavigation from "./HeroNavigation"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const { location, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
     if (location.pathname === rootPath) {
-      header = (
-        <h1>
-          <Link to={`/`}>
-            <Logo />
-            {title}
-          </Link>
-        </h1>
-      )
+      header = <Hero />
     } else {
-      header = (
-        <h3>
-          <Link to={`/`}>
-            <Logo />
-            {title}
-          </Link>
-        </h3>
-      )
+      header = <HeroNavigation />
     }
     return (
       <div className="antialiased text-gray-900 font-sans">
+        {header}
         <main className="">{children}</main>
         <footer className="bg-gray-900 text-gray-100">
           <div className="flex justify-between p-8">
