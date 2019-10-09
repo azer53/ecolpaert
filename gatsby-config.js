@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: `SAP C/4 and Open-Source blog`,
@@ -9,13 +13,6 @@ module.exports = {
     },
   },
   plugins: [
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        path: `${__dirname}/content/blog`,
-        name: `blog`,
-      },
-    },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -53,7 +50,6 @@ module.exports = {
         trackingId: `UA-139588363-1`,
       },
     },
-    `gatsby-plugin-feed`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
@@ -66,18 +62,19 @@ module.exports = {
         icon: `content/assets/logo-favicon.png`,
       },
     },
-    `gatsby-plugin-offline`,
-    {
-      resolve: 'gatsby-plugin-netlify-cms',
-      options: {
-        modulePath: `${__dirname}/src/cms/cms.js`,
-      },
-    },
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+        downloadLocal: true,
       },
     },
   ],
