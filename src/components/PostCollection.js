@@ -12,14 +12,15 @@ export default class PostCollection extends Component {
           const title = node.title || node.slug
           return (
             <div key={node.slug} className="py-12 border-gray-200 border-b">
+              <p className="font-thin uppercase text-xs tracking-widest py-1">
+                {node.publicationDate}
+              </p>
               <h3 className="text-lg font-medium">
                 <Link style={{ boxShadow: `none` }} to={node.slug}>
                   {title}
                 </Link>
               </h3>
-              <p className="font-thin uppercase text-xs tracking-widest py-1">
-                {node.publicationDate}
-              </p>
+
               <Tags tags={node.tags} />
             </div>
           )
