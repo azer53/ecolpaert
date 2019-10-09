@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-blog",
+  "name": "e-colpaert",
   "private": true,
   "description": "A starter for a blog powered by Gatsby and Markdown",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Eli Colpaert <colpaerteli@gmail.com>",
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
   },
@@ -11,7 +11,6 @@
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "gatsby": "^2.15.34",
     "gatsby-image": "^2.2.25",
-    "gatsby-plugin-feed": "^2.3.16",
     "gatsby-plugin-google-analytics": "^2.1.21",
     "gatsby-plugin-manifest": "^2.2.21",
     "gatsby-plugin-offline": "^3.0.13",
