@@ -49,7 +49,9 @@ class BlogPostTemplate extends React.Component {
       },
       renderNode: {
         [BLOCKS.PARAGRAPH]: (post, children) => (
-          <div className="mt-4 p-2 leading-loose tracking-wide">{children}</div>
+          <section className="mt-4 p-2 leading-loose tracking-wide">
+            {children}
+          </section>
         ),
         [BLOCKS.HEADING_1]: (post, children) => (
           <h1 className="text-4xl tracking-wide font-normal mt-12">
