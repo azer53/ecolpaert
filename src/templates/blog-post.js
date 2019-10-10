@@ -20,10 +20,17 @@ class BlogPostTemplate extends React.Component {
       <span className="pb-3 border-b border-orange-500 ">{children}</span>
     )
 
+    const Code = ({ children }) => (
+      <pre>
+        <code class="language-javascript"> {children}</code>
+      </pre>
+    )
+
     const options = {
       renderMark: {
         [MARKS.BOLD]: text => <Bold>{text}</Bold>,
         [MARKS.UNDERLINE]: text => <Underline>{text}</Underline>,
+        [MARKS.CODE]: text => <Code>{text}</Code>,
       },
       renderNode: {
         [BLOCKS.PARAGRAPH]: (post, children) => (
@@ -86,6 +93,7 @@ class BlogPostTemplate extends React.Component {
           </h1>
           <article className="py-6">{postContent}</article>
           <Bio />
+
           <ul className="flex justify-between">
             <li className="text-orange-700">
               {previous && (
