@@ -6,8 +6,13 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
+import Prism from "prismjs"
 
 class BlogPostTemplate extends React.Component {
+  componentDidMount() {
+    Prism.highlightAll()
+  }
+
   render() {
     const post = this.props.data.contentfulBlogPost
     const siteTitle = this.props.data.site.siteMetadata.title
