@@ -34,10 +34,9 @@ class BlogPostTemplate extends React.Component {
       </div>
     )
 
-    const CustomComponent = ({ title, description }) => (
+    const AssetBlock = ({ src, title }) => (
       <div>
-        <h2>{title}</h2>
-        <p>{description}</p>
+        <img src={src} alt={title} />
       </div>
     )
 
@@ -73,23 +72,9 @@ class BlogPostTemplate extends React.Component {
             {children}
           </h4>
         ),
-        [BLOCKS.EMBEDDED_ENTRY]: node => {
-          console.log(node)
-          return (
-            <CustomComponent
-              title={node.title}
-              description={node.description}
-            />
-          )
-        },
         [BLOCKS.EMBEDDED_ASSET]: node => {
-          console.log(node)
-          return (
-            <CustomComponent
-              title={node.title}
-              description={node.description}
-            />
-          )
+          const { url, fileName } = node.data.target.fields.file["en-US"]
+          return <AssetBlock src={url} title={fileName} />
         },
         [BLOCKS.QUOTE]: (post, children) => (
           <div className="text-lg tracking-wide font-normal mb-6 italic bg-gray-100 rounded-lg p-2 text-gray-900">
