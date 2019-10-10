@@ -4,6 +4,7 @@ import { Link, graphql } from "gatsby"
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import Tags from "../components/Tags"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Prism from "prismjs"
@@ -26,10 +27,17 @@ class BlogPostTemplate extends React.Component {
     )
 
     const Code = ({ children }) => (
-      <div class="gatsby-highlight" data-language="text">
-        <pre class="language-javascript">
-          <code class="language-javascript">{children}</code>
+      <div className="gatsby-highlight" data-language="text">
+        <pre className="language-javascript">
+          <code className="language-javascript">{children}</code>
         </pre>
+      </div>
+    )
+
+    const CustomComponent = ({ title, description }) => (
+      <div>
+        <h2>{title}</h2>
+        <p>{description}</p>
       </div>
     )
 
@@ -41,7 +49,7 @@ class BlogPostTemplate extends React.Component {
       },
       renderNode: {
         [BLOCKS.PARAGRAPH]: (post, children) => (
-          <p className="mt-4 p-2 leading-loose tracking-wide">{children}</p>
+          <div className="mt-4 p-2 leading-loose tracking-wide">{children}</div>
         ),
         [BLOCKS.HEADING_1]: (post, children) => (
           <h1 className="text-4xl tracking-wide font-normal mt-12">
@@ -63,6 +71,24 @@ class BlogPostTemplate extends React.Component {
             {children}
           </h4>
         ),
+        [BLOCKS.EMBEDDED_ENTRY]: node => {
+          console.log(node)
+          return (
+            <CustomComponent
+              title={node.title}
+              description={node.description}
+            />
+          )
+        },
+        [BLOCKS.EMBEDDED_ASSET]: node => {
+          console.log(node)
+          return (
+            <CustomComponent
+              title={node.title}
+              description={node.description}
+            />
+          )
+        },
         [BLOCKS.QUOTE]: (post, children) => (
           <div className="text-lg tracking-wide font-normal mb-6 italic bg-gray-100 rounded-lg p-2 text-gray-900">
             <div className="-m-5">
@@ -80,7 +106,7 @@ class BlogPostTemplate extends React.Component {
         [INLINES.HYPERLINK]: (post, children) => (
           <a
             href="/"
-            className="text-indigo-700 font-semibold cursor-pointer border-b border-indigo-500"
+            className="text-orange-700 font-semibold cursor-pointer border-b border-orange-500"
           >
             {children}
           </a>
@@ -100,6 +126,9 @@ class BlogPostTemplate extends React.Component {
           <h1 className="text-5xl tracking-wide font-normal mb-6">
             {post.title}
           </h1>
+          <section className="m-1">
+            <Tags tags={post.tags} />
+          </section>
           <article className="py-6">{postContent}</article>
           <Bio />
 
