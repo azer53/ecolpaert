@@ -23,7 +23,7 @@ class BlogPostTemplate extends React.Component {
       <span className="font-bold ">{children}</span>
     )
     const Underline = ({ children }) => (
-      <span className="border-b-2 border-orange-500">{children}</span>
+      <span className="border-b border-gray-500">{children}</span>
     )
 
     const Code = ({ children }) => (
@@ -73,6 +73,7 @@ class BlogPostTemplate extends React.Component {
           </h4>
         ),
         [BLOCKS.EMBEDDED_ASSET]: node => {
+          console.log(node)
           if (node.data.target.fields) {
             const { url, fileName } = node.data.target.fields.file["en-US"]
             return <AssetBlock src={url} title={fileName} />
@@ -95,7 +96,7 @@ class BlogPostTemplate extends React.Component {
         [INLINES.HYPERLINK]: node => {
           return (
             <a
-              className="text-orange-900 border-b-2 border-orange-500"
+              className="visited:text-orange-900 border-b-2 border-orange-500"
               href={node.data.uri}
             >
               {node.content[0].value}
