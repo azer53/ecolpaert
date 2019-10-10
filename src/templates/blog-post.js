@@ -21,9 +21,11 @@ class BlogPostTemplate extends React.Component {
     )
 
     const Code = ({ children }) => (
-      <pre>
-        <code class="language-javascript"> {children}</code>
-      </pre>
+      <div class="gatsby-highlight" data-language="text">
+        <pre class="language-javascript">
+          <code class="language-javascript">{children}</code>
+        </pre>
+      </div>
     )
 
     const options = {
@@ -134,7 +136,6 @@ export const pageQuery = graphql`
       slug
       body {
         json
-        body
       }
       tags
     }
