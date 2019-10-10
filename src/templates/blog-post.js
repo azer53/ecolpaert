@@ -23,7 +23,7 @@ class BlogPostTemplate extends React.Component {
       <span className="font-bold ">{children}</span>
     )
     const Underline = ({ children }) => (
-      <span className="pb-3 border-b border-orange-500 ">{children}</span>
+      <span className="border-b-2 border-orange-500">{children}</span>
     )
 
     const Code = ({ children }) => (
@@ -73,8 +73,10 @@ class BlogPostTemplate extends React.Component {
           </h4>
         ),
         [BLOCKS.EMBEDDED_ASSET]: node => {
-          const { url, fileName } = node.data.target.fields.file["en-US"]
-          return <AssetBlock src={url} title={fileName} />
+          if (node.data.target.fields) {
+            const { url, fileName } = node.data.target.fields.file["en-US"]
+            return <AssetBlock src={url} title={fileName} />
+          }
         },
         [BLOCKS.QUOTE]: (post, children) => (
           <div className="text-lg tracking-wide font-normal mb-6 italic bg-gray-100 rounded-lg p-2 text-gray-900">
@@ -90,14 +92,16 @@ class BlogPostTemplate extends React.Component {
             {children}
           </div>
         ),
-        [INLINES.HYPERLINK]: (post, children) => (
-          <a
-            href="/"
-            className="text-orange-700 font-semibold cursor-pointer border-b border-orange-500"
-          >
-            {children}
-          </a>
-        ),
+        [INLINES.HYPERLINK]: node => {
+          return (
+            <a
+              className="text-orange-900 border-b-2 border-orange-500"
+              href={node.data.uri}
+            >
+              {node.content[0].value}
+            </a>
+          )
+        },
       },
     }
     const postContent = documentToReactComponents(post.body.json, options)
