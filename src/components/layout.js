@@ -1,7 +1,7 @@
 import React from "react"
-import Hero from "../components/Hero"
 import "../css/global.css"
-import HeroNavigation from "./HeroNavigation"
+import BioHero from "./BioHero"
+import Navigation from "./Navigation"
 
 class Layout extends React.Component {
   render() {
@@ -10,9 +10,17 @@ class Layout extends React.Component {
     let header
 
     if (location.pathname === rootPath) {
-      header = <Hero />
+      header = (
+        <div className="w-full hero py-12 shadow">
+          <BioHero />
+        </div>
+      )
     } else {
-      header = <HeroNavigation />
+      header = (
+        <div className="w-full shadow">
+          <Navigation />
+        </div>
+      )
     }
     return (
       <div className="antialiased text-gray-900 font-sans">

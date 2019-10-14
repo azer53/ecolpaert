@@ -28,9 +28,7 @@ class BlogIndex extends React.Component {
         />
         <div className="sm:max-w-4xl mx-auto py-10 p-8">
           <h3 className="text-2xl uppercase tracking-wider font-thin text-gray-700">
-            <span className="pb-2 border-b border-orange-500">
-              Latest &nbsp;
-            </span>
+            <span className="pb-2 border-b border-teal-500">Latest &nbsp;</span>
             Articles
           </h3>
           <PostCollection posts={posts} />

@@ -6,7 +6,7 @@ export default class Tags extends Component {
     return (
       <ul className="flex mt-3">
         {tags.map(tag => (
-          <li key={tag} className="text-orange-800 text-sm pr-4">
+          <li key={tag} className="text-teal-800 text-sm pr-4">
             #{tag}
           </li>
         ))}

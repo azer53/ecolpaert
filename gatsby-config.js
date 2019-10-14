@@ -6,7 +6,8 @@ module.exports = {
   siteMetadata: {
     title: `SAP C/4 and Open-Source blog`,
     author: `Eli Colpaert`,
-    description: `A technical blog by Eli Colpaert`,
+    description: `Working at delaware, professional SAP C/4 enthusiast and quite
+              passionate about new Open-Source technology.`,
     siteUrl: `https://gatsby-starter-blog-demo.netlify.com/`,
     social: {
       twitter: `colpaerteli`,
@@ -28,6 +29,7 @@ module.exports = {
         downloadLocal: true,
       },
     },
+
     {
       resolve: `gatsby-transformer-remark`,
       options: {

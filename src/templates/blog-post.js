@@ -96,7 +96,7 @@ class BlogPostTemplate extends React.Component {
         [INLINES.HYPERLINK]: node => {
           return (
             <a
-              className="visited:text-orange-900 border-b-2 border-orange-500"
+              className="visited:text-teal-900 border-b-2 border-teal-500"
               href={node.data.uri}
             >
               {node.content[0].value}
@@ -125,14 +125,14 @@ class BlogPostTemplate extends React.Component {
           <Bio />
 
           <ul className="flex justify-between">
-            <li className="text-orange-700">
+            <li className="text-teal-700">
               {previous && (
                 <Link to={previous.slug} rel="prev">
                   ← {previous.title}
                 </Link>
               )}
             </li>
-            <li className="text-orange-700">
+            <li className="text-teal-700">
               {" "}
               {next && (
                 <Link to={next.slug} rel="next">
