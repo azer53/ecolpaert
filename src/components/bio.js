@@ -9,39 +9,30 @@ import React from "react"
 import { StaticQuery, graphql } from "gatsby"
 import Image from "gatsby-image"
 
-import { rhythm } from "../utils/typography"
-
 function Bio() {
   return (
     <StaticQuery
       query={bioQuery}
       render={data => {
-        const { author, social } = data.site.siteMetadata
+        const { author, social, description } = data.site.siteMetadata
         return (
-          <div
-            style={{
-              display: `flex`,
-              marginBottom: rhythm(2.5),
-            }}
-          >
-            <Image
-              fixed={data.avatar.childImageSharp.fixed}
-              alt={author}
-              style={{
-                marginRight: rhythm(1 / 2),
-                marginBottom: 0,
-                minWidth: 50,
-                borderRadius: `100%`,
-              }}
-              imgStyle={{
-                borderRadius: `50%`,
-              }}
-            />
+          <div className="p-6 border-gray-300 border my-8 flex flex-col items-center">
+            <div className="my-2">
+              <Image
+                fixed={data.avatar.childImageSharp.fixed}
+                alt={author}
+                className="rounded-full border-teal-500 border-4"
+              />
+            </div>
             <p>
-              <p>By <a href={`https://twitter.com/${social.twitter}`}><strong>{author}</strong> </a> </p>
-              {` `}
-              Working at delaware, professional SAP C/4 enthusiast and quite passionate about new Open-Source technology. 
+              By&nbsp;
+              <a href={`https://twitter.com/${social.twitter}`}>
+                <strong>{author}</strong>
+              </a>
             </p>
+            <section className="w-1/2 mx-auto text-center">
+              {description}
+            </section>
           </div>
         )
       }}
@@ -51,9 +42,9 @@ function Bio() {
 
 const bioQuery = graphql`
   query BioQuery {
-    avatar: file(absolutePath: { regex: "/profile-pic.jpg/" }) {
+    avatar: file(absolutePath: { regex: "/ec.jpeg/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 100, height: 100) {
           ...GatsbyImageSharpFixed
         }
       }
@@ -61,6 +52,7 @@ const bioQuery = graphql`
     site {
       siteMetadata {
         author
+        description
         social {
           twitter
         }

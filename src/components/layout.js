@@ -1,77 +1,39 @@
 import React from "react"
-import { Link } from "gatsby"
-import Logo from "../components/logo"
-
-import { rhythm, scale } from "../utils/typography"
+import "../css/global.css"
+import BioHero from "./BioHero"
+import Navigation from "./Navigation"
 
 class Layout extends React.Component {
   render() {
-    const { location, title, children } = this.props
+    const { location, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
     let header
 
     if (location.pathname === rootPath) {
       header = (
-        <h1
-          style={{
-            ...scale(1.5),
-            marginBottom: rhythm(1.5),
-            marginTop: 0,
-          }}
-        >
-
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-              display: `flex`
-            }}
-            to={`/`}
-          >
-            <Logo />
-            {title}
-          </Link>
-        </h1>
+        <div className="w-full hero py-12 shadow">
+          <BioHero />
+        </div>
       )
     } else {
       header = (
-        <h3
-          style={{
-            fontFamily: `Montserrat, sans-serif`,
-            marginTop: 0,
-          }}
-        >
-          <Link
-            style={{
-              boxShadow: `none`,
-              textDecoration: `none`,
-              color: `inherit`,
-              display:`flex`
-            }}
-            to={`/`}
-          >
-           <Logo />
-            {/* {title} */}
-          </Link>
-        </h3>
+        <div className="w-full shadow">
+          <Navigation />
+        </div>
       )
     }
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        <header>{header}</header>
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a> and <a href="https://www.netlify.com">Netlify</a>
+      <div className="antialiased text-gray-900 font-sans bg-gray-100">
+        {header}
+        <main className="">{children}</main>
+        <footer className="bg-gray-900 text-gray-100">
+          <div className="flex justify-between p-8">
+            <div className="text-center"></div>
+            <div className="text-center text-gray-300">
+              Made By Eli Colpaert
+            </div>
+            <div className="text-center"></div>
+          </div>
         </footer>
       </div>
     )

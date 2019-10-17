@@ -1,9 +1,9 @@
-import React from "react"
-import { Link, graphql } from "gatsby"
+import React, { Fragment } from "react"
+import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
-import { rhythm } from "../utils/typography"
+import PostCollection from "../components/PostCollection"
 
 class BlogIndex extends React.Component {
   render() {
@@ -26,23 +26,17 @@ class BlogIndex extends React.Component {
             `SAP`,
           ]}
         />
-        {posts.map(({ node }) => {
-          const title = node.title || node.slug
-          return (
-            <div key={node.slug}>
-              <h3
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={node.slug}>
-                  {title}
-                </Link>
-              </h3>
-              <small>{node.publicationDate}</small>
-            </div>
-          )
-        })}
+        <div className="bg-white">
+          <div className="sm:max-w-4xl mx-auto py-10 p-8">
+            <h3 className="text-2xl uppercase tracking-wider font-thin text-gray-700">
+              <span className="pb-2 border-b border-teal-500">
+                Latest &nbsp;
+              </span>
+              Articles
+            </h3>
+            <PostCollection posts={posts} />
+          </div>
+        </div>
       </Layout>
     )
   }
@@ -63,6 +57,7 @@ export const pageQuery = graphql`
           slug
           title
           publicationDate(formatString: "MMMM Do, YYYY")
+          tags
         }
       }
     }
