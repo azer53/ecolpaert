@@ -23,7 +23,7 @@ class Layout extends React.Component {
       )
     }
     return (
-      <div className="antialiased text-gray-900 font-sans">
+      <div className="antialiased text-gray-900 font-sans bg-gray-100">
         {header}
         <main className="">{children}</main>
         <footer className="bg-gray-900 text-gray-100">

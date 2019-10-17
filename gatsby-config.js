@@ -26,7 +26,7 @@ module.exports = {
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
-        downloadLocal: true,
+        downloadLocal: false,
       },
     },
 
@@ -79,7 +79,7 @@ module.exports = {
         name: `Gatsby Starter Blog`,
         short_name: `GatsbyJS`,
         start_url: `/`,
-        background_color: `#ffffff`,
+        background_color: `#1a202c`,
         theme_color: `#663399`,
         display: `minimal-ui`,
         icon: `content/assets/logo-favicon.png`,

@@ -8,6 +8,7 @@ import Tags from "../components/Tags"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Prism from "prismjs"
+import Img from "gatsby-image"
 
 class BlogPostTemplate extends React.Component {
   componentDidMount() {
@@ -35,8 +36,9 @@ class BlogPostTemplate extends React.Component {
     )
 
     const AssetBlock = ({ src, title }) => (
-      <div>
-        <img src={src} alt={title} />
+      <div className="py-4 p-2">
+        <img src={src} alt={title} loading="lazy" />
+        {/* <Img src={src} /> */}
       </div>
     )
 
@@ -73,7 +75,6 @@ class BlogPostTemplate extends React.Component {
           </h4>
         ),
         [BLOCKS.EMBEDDED_ASSET]: node => {
-          console.log(node)
           if (node.data.target.fields) {
             const { url, fileName } = node.data.target.fields.file["en-US"]
             return <AssetBlock src={url} title={fileName} />
@@ -109,8 +110,12 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <div className="sm:max-w-4xl mx-auto py-10 p-8">
-          <SEO title={post.title} description={post.title || post.title} />
+        <div className="sm:max-w-4xl mx-auto py-5 p-8 bg-white my-5 rounded-lg shadow-lg">
+          <SEO
+            title={post.title}
+            description={post.title || post.title}
+            keywords={post.tags}
+          />
           <p className="text-xs uppercase font-light tracking-widest">
             {post.publicationDate}
           </p>

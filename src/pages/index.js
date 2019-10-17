@@ -1,4 +1,4 @@
-import React from "react"
+import React, { Fragment } from "react"
 import { graphql } from "gatsby"
 
 import Layout from "../components/layout"
@@ -26,12 +26,16 @@ class BlogIndex extends React.Component {
             `SAP`,
           ]}
         />
-        <div className="sm:max-w-4xl mx-auto py-10 p-8">
-          <h3 className="text-2xl uppercase tracking-wider font-thin text-gray-700">
-            <span className="pb-2 border-b border-teal-500">Latest &nbsp;</span>
-            Articles
-          </h3>
-          <PostCollection posts={posts} />
+        <div className="bg-white">
+          <div className="sm:max-w-4xl mx-auto py-10 p-8">
+            <h3 className="text-2xl uppercase tracking-wider font-thin text-gray-700">
+              <span className="pb-2 border-b border-teal-500">
+                Latest &nbsp;
+              </span>
+              Articles
+            </h3>
+            <PostCollection posts={posts} />
+          </div>
         </div>
       </Layout>
     )
