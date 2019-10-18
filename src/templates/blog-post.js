@@ -5,12 +5,16 @@ import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/Tags"
+import AssetBlock from "../components/AssetBlock"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Prism from "prismjs"
-import Img from "gatsby-image"
 
 class BlogPostTemplate extends React.Component {
+  constructor(props) {
+    super(props)
+    this.containerRef = React.createRef()
+  }
   componentDidMount() {
     Prism.highlightAll()
   }
@@ -32,13 +36,6 @@ class BlogPostTemplate extends React.Component {
         <pre className="language-javascript">
           <code className="language-javascript">{children}</code>
         </pre>
-      </div>
-    )
-
-    const AssetBlock = ({ src, title }) => (
-      <div className="py-4 p-2">
-        <img src={src} alt={title} loading="lazy" />
-        {/* <Img src={src} /> */}
       </div>
     )
 
@@ -110,7 +107,10 @@ class BlogPostTemplate extends React.Component {
 
     return (
       <Layout location={this.props.location} title={siteTitle}>
-        <div className="sm:max-w-4xl mx-auto py-5 p-8 bg-white my-5 rounded-lg shadow-lg">
+        <div
+          className="sm:max-w-4xl mx-auto py-5 p-8 bg-white my-5 rounded-lg shadow-lg text-gray-900"
+          ref={this.containerRef}
+        >
           <SEO
             title={post.title}
             description={post.title || post.title}
