@@ -6,11 +6,7 @@ export default class AssetBlock extends Component {
     this.myInput = React.createRef()
     this.title = this.props.title
     this.src = this.props.src
-    this.containerWidth = 100
-  }
-
-  componentDidMount() {
-    //this.containerWidth = this.myInput.current.offsetWidth
+    this.containerWidth = 892
   }
 
   render() {

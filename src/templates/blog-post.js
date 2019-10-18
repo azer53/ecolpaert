@@ -110,6 +110,7 @@ class BlogPostTemplate extends React.Component {
         <div
           className="sm:max-w-4xl mx-auto py-5 p-8 bg-white my-5 rounded-lg shadow-lg text-gray-900"
           ref={this.containerRef}
+          id="test"
         >
           <SEO
             title={post.title}
