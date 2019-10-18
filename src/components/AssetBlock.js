@@ -32,6 +32,7 @@ export default class AssetBlock extends Component {
               this.containerWidth
             }
             alt={this.title}
+            loading="lazy"
           />
         </picture>
       </div>
