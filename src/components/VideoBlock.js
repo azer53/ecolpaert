@@ -5,7 +5,7 @@ export default class VideoBlock extends Component {
     const src = this.props.src
 
     return (
-      <video className="py-4 p-2" controls>
+      <video className="py-4 p-2 focus:outline-none" controls>
         <source src={src} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
