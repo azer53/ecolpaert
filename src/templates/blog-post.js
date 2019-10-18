@@ -6,6 +6,7 @@ import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/Tags"
 import AssetBlock from "../components/AssetBlock"
+import VideoBlock from "../components/VideoBlock"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import Prism from "prismjs"
@@ -72,9 +73,23 @@ class BlogPostTemplate extends React.Component {
           </h4>
         ),
         [BLOCKS.EMBEDDED_ASSET]: node => {
+          console.log(node.data)
           if (node.data.target.fields) {
-            const { url, fileName } = node.data.target.fields.file["en-US"]
-            return <AssetBlock src={url} title={fileName} />
+            const { url, fileName, contentType } = node.data.target.fields.file[
+              "en-US"
+            ]
+            switch (contentType) {
+              case "video/mp4":
+                return <VideoBlock src={url} />
+              case "image/png":
+                return <AssetBlock title={fileName} src={url} />
+              case "image/jpg":
+                return <AssetBlock title={fileName} src={url} />
+              case "image/jpeg":
+                return <AssetBlock title={fileName} src={url} />
+              default:
+                return <></>
+            }
           }
         },
         [BLOCKS.QUOTE]: (post, children) => (
@@ -110,7 +125,6 @@ class BlogPostTemplate extends React.Component {
         <div
           className="sm:max-w-4xl mx-auto py-5 p-8 bg-white my-5 rounded-lg shadow-lg text-gray-900"
           ref={this.containerRef}
-          id="test"
         >
           <SEO
             title={post.title}
