@@ -1,10 +1,10 @@
 import React from "react"
 import { Link, graphql } from "gatsby"
-
 import Bio from "../components/bio"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
 import Tags from "../components/Tags"
+import CustomComponent from "../components/CustomComponent"
 import AssetBlock from "../components/AssetBlock"
 import VideoBlock from "../components/VideoBlock"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
@@ -33,11 +33,9 @@ class BlogPostTemplate extends React.Component {
     )
 
     const Code = ({ children }) => (
-      <div className="gatsby-highlight" data-language="text">
-        <pre className="language-javascript">
-          <code className="language-javascript">{children}</code>
-        </pre>
-      </div>
+      <pre>
+        <code className="language-javascript">{children}</code>
+      </pre>
     )
 
     const options = {
@@ -58,22 +56,24 @@ class BlogPostTemplate extends React.Component {
           </h1>
         ),
         [BLOCKS.HEADING_2]: (post, children) => (
-          <h2 className="text-4xl tracking-wide font-normal mt-12">
+          <h2 className="text-3xl tracking-wide font-normal mt-12">
             {children}
           </h2>
         ),
         [BLOCKS.HEADING_3]: (post, children) => (
-          <h3 className="text-3xl tracking-wide font-normal mt-8">
+          <h3 className="text-2xl tracking-wide font-normal mt-8">
             {children}
           </h3>
         ),
         [BLOCKS.HEADING_4]: (post, children) => (
-          <h4 className="text-3xl tracking-wide font-normal mt-8">
+          <h4 className="text-xl tracking-wide font-bold mt-8">{children}</h4>
+        ),
+        [BLOCKS.HEADING_5]: (post, children) => (
+          <h5 className="text-lg tracking-wide font-semibold mt-8">
             {children}
-          </h4>
+          </h5>
         ),
         [BLOCKS.EMBEDDED_ASSET]: node => {
-          console.log(node.data)
           if (node.data.target.fields) {
             const { url, fileName, contentType } = node.data.target.fields.file[
               "en-US"
@@ -91,6 +91,9 @@ class BlogPostTemplate extends React.Component {
                 return <></>
             }
           }
+        },
+        [BLOCKS.EMBEDDED_ENTRY]: node => {
+          return <CustomComponent node={node} />
         },
         [BLOCKS.QUOTE]: (post, children) => (
           <div className="text-lg tracking-wide font-normal mb-6 italic bg-gray-100 rounded-lg p-2 text-gray-900">
@@ -145,14 +148,14 @@ class BlogPostTemplate extends React.Component {
           <Bio />
 
           <ul className="flex justify-between">
-            <li className="text-teal-700">
+            <li className="text-teal-900 font-semibold">
               {previous && (
                 <Link to={previous.slug} rel="prev">
                   ← {previous.title}
                 </Link>
               )}
             </li>
-            <li className="text-teal-700">
+            <li className="text-teal-900 font-semibold">
               {" "}
               {next && (
                 <Link to={next.slug} rel="next">
