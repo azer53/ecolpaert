@@ -31,17 +31,14 @@ const CustomComponent = props => {
 
   const filteredBlock = allContentfulCodeBlock.edges.filter(codeBlockEquals)[0]
     .node
-  const language = "language-" + filteredBlock.language
 
   return (
-    <pre>
-      <code
-        className={language}
-        dangerouslySetInnerHTML={{
-          __html: filteredBlock.code.childMarkdownRemark.html,
-        }}
-      ></code>
-    </pre>
+    <div
+      className="mt-4 p-2"
+      dangerouslySetInnerHTML={{
+        __html: filteredBlock.code.childMarkdownRemark.html,
+      }}
+    ></div>
   )
 }
 
