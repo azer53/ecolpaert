@@ -9,15 +9,11 @@ import AssetBlock from "../components/AssetBlock"
 import VideoBlock from "../components/VideoBlock"
 import { BLOCKS, MARKS, INLINES } from "@contentful/rich-text-types"
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
-import Prism from "prismjs"
 
 class BlogPostTemplate extends React.Component {
   constructor(props) {
     super(props)
     this.containerRef = React.createRef()
-  }
-  componentDidMount() {
-    Prism.highlightAll()
   }
 
   render() {
@@ -33,9 +29,9 @@ class BlogPostTemplate extends React.Component {
     )
 
     const Code = ({ children }) => (
-      <pre>
-        <code className="language-javascript">{children}</code>
-      </pre>
+      <code className="bg-gray-200 text-gray-900 p-1 text-sm rounded-sm">
+        {children}
+      </code>
     )
 
     const options = {
@@ -73,6 +69,13 @@ class BlogPostTemplate extends React.Component {
             {children}
           </h5>
         ),
+        [BLOCKS.OL_LIST]: (post, children) => (
+          <ol className="list-decimal ml-12">{children}</ol>
+        ),
+        [BLOCKS.UL_LIST]: (post, children) => (
+          <ul className="list-disc	ml-12">{children}</ul>
+        ),
+        [BLOCKS.LIST_ITEM]: (post, children) => <li> {children}</li>,
         [BLOCKS.EMBEDDED_ASSET]: node => {
           if (node.data.target.fields) {
             const { url, fileName, contentType } = node.data.target.fields.file[
